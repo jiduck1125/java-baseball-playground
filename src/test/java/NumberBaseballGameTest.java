@@ -50,4 +50,12 @@ class NumberBaseballGameTest {
             arguments("713", "671", new int[]{2, 0}), arguments("713", "216", new int[]{0, 1}),
             arguments("713", "713", new int[]{0, 3}));
     }
+
+
+    @ParameterizedTest
+    @CsvSource({"2,1,2볼 1스트라이크", "0,1,1스트라이크", "2,0,2볼", "0,0,낫싱"})
+    void getMatchResultMessage(int ball, int strike, String expected) {
+        NumberBaseballGame game = new NumberBaseballGame();
+        assertThat(game.getMatchResultMessage(ball, strike)).isEqualTo(expected);
+    }
 }
