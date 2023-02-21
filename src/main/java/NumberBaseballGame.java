@@ -70,6 +70,23 @@ public class NumberBaseballGame {
         return false;
     }
 
+    public void play() {
+
+        initTargetNumber();
+
+        boolean isCorrect = false;
+
+        while (!isCorrect) {
+            String inputNumber = InputView.getInputNumber();
+            int[] matchResult = getMatchResult(targetNumber, inputNumber);
+            String matchResultMessage = getMatchResultMessage(matchResult[0], matchResult[1]);
+            ResultView.printMatchResultMessage(matchResultMessage);
+            isCorrect = targetNumber.equals(inputNumber);
+        }
+
+        ResultView.printFinishMessage(NUMBER_LENGTH);
+    }
+
     public static class InputView {
 
         public static final Scanner scanner = new Scanner(System.in);
