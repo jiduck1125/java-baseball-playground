@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class NumberBaseballGame {
@@ -58,6 +59,31 @@ public class NumberBaseballGame {
             return strike + "스트라이크";
         }
         return "낫싱";
+    }
+
+    public boolean willPlay() {
+        int flag = InputView.getGameProcessFlag();
+        if (flag == 1) {
+            return true;
+        }
+        ResultView.printExitMessage();
+        return false;
+    }
+
+    public static class InputView {
+
+        public static final Scanner scanner = new Scanner(System.in);
+
+        public static String getInputNumber() {
+            System.out.print("숫자를 입력해 주세요 : ");
+            return scanner.next();
+        }
+
+        public static int getGameProcessFlag() {
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+            return scanner.nextInt();
+        }
+
     }
 
     public static class ResultView {
