@@ -60,5 +60,20 @@ public class NumberBaseballGame {
         return "낫싱";
     }
 
+    public static class ResultView {
+
+        public static void printMatchResultMessage(String message) {
+            System.out.println(message);
+        }
+
+        public static void printFinishMessage(int numberLength) {
+            System.out.println(numberLength + "개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        }
+
+        public static void printExitMessage() {
+            System.out.println("게임 종료");
+        }
+    }
+
 
 }
