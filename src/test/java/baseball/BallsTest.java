@@ -38,6 +38,7 @@ public class BallsTest {
         MatchResult result = comBalls.match(Arrays.asList(1, 2, 3));
         assertThat(result.getStrikeCount()).isEqualTo(3);
         assertThat(result.getBallCount()).isEqualTo(0);
+        assertThat(result.isGameEnd()).isTrue();
     }
 
     @Test
@@ -45,6 +46,7 @@ public class BallsTest {
         MatchResult result = comBalls.match(Arrays.asList(1, 3, 2));
         assertThat(result.getStrikeCount()).isEqualTo(1);
         assertThat(result.getBallCount()).isEqualTo(2);
+        assertThat(result.isGameEnd()).isFalse();
     }
 
     @Test
@@ -52,6 +54,7 @@ public class BallsTest {
         MatchResult result = comBalls.match(Arrays.asList(5, 6, 7));
         assertThat(result.getStrikeCount()).isEqualTo(0);
         assertThat(result.getBallCount()).isEqualTo(0);
+        assertThat(result.isGameEnd()).isFalse();
     }
 
 
