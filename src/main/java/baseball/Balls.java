@@ -1,13 +1,23 @@
 package baseball;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Balls {
 
+    public static final int NUMBER_LENGTH = 3;
+
     private final List<Ball> balls;
 
     public Balls(List<Integer> numbers) {
+        if (numbers.size() != NUMBER_LENGTH) {
+            throw new IllegalArgumentException("볼 숫자의 길이는 " + NUMBER_LENGTH + "자리여야 합니다.");
+        }
+        if (new HashSet<>(numbers).size() != numbers.size()) {
+            throw new IllegalArgumentException("볼 숫자는 중복이 없어야 합니다.");
+        }
+
         this.balls = mapBalls(numbers);
     }
 

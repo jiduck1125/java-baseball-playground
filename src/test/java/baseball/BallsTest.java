@@ -16,6 +16,25 @@ public class BallsTest {
     }
 
     @Test
+    void validation_Length() {
+        assertThat(new Balls(Arrays.asList(1, 2, 3))).isInstanceOf(Balls.class);
+        assertThatThrownBy(() -> new Balls(Arrays.asList(1, 2)))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("볼 숫자의 길이는");
+        assertThatThrownBy(() -> new Balls(Arrays.asList(1, 2, 3, 4)))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("볼 숫자의 길이는");
+    }
+
+    @Test
+    void validation_Duplication() {
+        assertThat(new Balls(Arrays.asList(1, 2, 3))).isInstanceOf(Balls.class);
+        assertThatThrownBy(() -> new Balls(Arrays.asList(1, 2, 1)))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("중복");
+    }
+
+    @Test
     void match_BallsAndBall_Strike() {
         BallStatus ballStatus = comBalls.match(new Ball(1, 1));
         assertThat(ballStatus).isEqualTo(BallStatus.STRIKE);

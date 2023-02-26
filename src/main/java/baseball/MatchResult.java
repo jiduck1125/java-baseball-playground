@@ -24,6 +24,6 @@ public class MatchResult {
     }
 
     public boolean isGameEnd() {
-        return strikeCount == ValidationUtils.NUMBER_LENGTH;
+        return strikeCount == Balls.NUMBER_LENGTH;
     }
 }

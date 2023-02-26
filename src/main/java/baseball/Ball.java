@@ -5,11 +5,11 @@ import java.util.Objects;
 public class Ball {
 
     private final int position;
-    private final int number;
+    private final BallNumber ballNumber;
 
     public Ball(int position, int number) {
         this.position = position;
-        this.number = number;
+        this.ballNumber = new BallNumber(number);
     }
 
     public BallStatus match(Ball ball) {
@@ -23,7 +23,7 @@ public class Ball {
     }
 
     private boolean matchNumber(Ball ball) {
-        return number == ball.number;
+        return ballNumber.equals(ball.ballNumber);
     }
 
     @Override
@@ -35,11 +35,11 @@ public class Ball {
             return false;
         }
         Ball ball = (Ball) o;
-        return position == ball.position && number == ball.number;
+        return position == ball.position && Objects.equals(ballNumber, ball.ballNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, number);
+        return Objects.hash(position, ballNumber);
     }
 }
